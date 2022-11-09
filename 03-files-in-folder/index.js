@@ -12,7 +12,11 @@ fs.readdir(path.join(__dirname, 'secret-folder'), { withFileTypes: true }, (erro
         if (error) {
           throw error
         }
-        console.log(file.name.split('.').join(' - '), '-', stats.size / 1000, 'kb')
+
+        let fileName = file.name.split('.').slice(0, -1).join('.')
+        let fileExt = file.name.split('.').slice(-1).join('')
+
+        console.log(fileName, '-', fileExt, '-', stats.size, 'b')
       })
     }
   }
